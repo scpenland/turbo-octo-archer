@@ -1,0 +1,33 @@
+<div class="small-4 columns" ng-controller="ListingController">
+  <h2>Sidebar</h2>
+  <ul id="emailListing">
+    <li ng-repeat="stuff in thing" ng-click="setSelectedThing(stuff)">
+      <div class="container" ng-class="{selected: isSelected(stuff)}">
+        <div>{{ stuff.name }}</div>
+        <div>{{ stuff.price }}</div>
+
+      </div>
+    </li>
+  </ul> 
+</div>
+
+<div class="small-8 columns" ng-controller="ContentController">
+  <h2>Content</h2>
+  <div ng-show="!selectedThing">
+    Nothing Selected
+  </div>
+  <div ng-show="selectedThing">
+    <form id="replyForm" ng-submit="sendEmailReply()">
+      <div class="row header">
+        <div class="small-6 columns">{{selectedThing.name}}</div>
+        <div class="small-6 columns">{{selectedThing.price}}</div>
+      </div>
+      <div class="row actions">
+        <a ng-click="showReply()" class="button radius push-1">I'm a button!</a>
+      </div>
+      <div class="small-12 columns" ng-bind-html-unsafe="selectedThing.dimensions">
+        {{selectedThing.dimensions}}
+      </div>
+    </form>
+  </div>
+</div>

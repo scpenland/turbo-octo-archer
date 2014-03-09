@@ -52,7 +52,13 @@ angular.module('myApp.controllers', [])
 
   .controller("FeedsController", ['$scope','ParseFeedService', function ($scope, ParseFeedService) {
 
-    $scope.feedSrc = 'http://rss.cnn.com/rss/cnn_topstories.rss';
+    $scope.importedFeeds = [
+      {url: "http://feeds.huffingtonpost.com/huffingtonpost/raw_feed"},
+      {url: "http://feeds.feedburner.com/TechCrunch"},
+      {url: "http://news.ycombinator.com/rss"}
+    ];
+
+    $scope.feedSrc = $scope.importedFeeds[0].url;
 
     $scope.titleText="Boring! Pick Something.";
 

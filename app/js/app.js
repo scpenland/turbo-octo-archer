@@ -26,5 +26,10 @@ config(['$routeProvider', function($routeProvider) {
     controller: 'ContactController'
   });
 
+  $routeProvider.when('/feeds', {
+    templateUrl: 'partials/feeds.html',
+    controller: 'FeedsController'
+  });
+
   $routeProvider.otherwise({redirectTo: '/'});
 }]);

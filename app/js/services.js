@@ -7,6 +7,26 @@
 // In this case it is a simple value service.
 angular.module('myApp.services', []).
   value('version', '0.1')
+
+  .factory('ParseFeedService',['$http',function($http){
+    return {
+        parseFeed : function(url){
+            return $http.jsonp('//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSON_CALLBACK&q=' + encodeURIComponent(url));
+        }
+    };
+  }])
+
+  .factory('GetFeedService', function($http) {
+   return{
+      getFeeds : function() {
+          return $http({
+              // url: '/config/data.json',
+              url: '/config/feeds.json',
+              method: 'GET'
+          });
+      }
+   };
+  })
   
   .service('ContactService', function () {
       //to create unique contact id

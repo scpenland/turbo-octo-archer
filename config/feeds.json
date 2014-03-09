@@ -1,0 +1,27 @@
+[
+    {
+        "id": 0,
+        "name": "CNN",
+        "url": "http://rss.cnn.com/rss/cnn_topstories.rss"
+    },
+    {
+        "id": 1,
+        "name": "Hacker News",
+        "url": "http://news.ycombinator.com/rss"
+    },
+    {
+        "id": 2,
+        "name": "CNN",
+        "url": "http://rss.cnn.com/rss/cnn_topstories.rss"
+    },
+    {
+        "id": 3,
+        "name": "CNN",
+        "url": "http://rss.cnn.com/rss/cnn_topstories.rss"
+    },
+    {
+        "id": 4,
+        "name": "CNN",
+        "url": "http://rss.cnn.com/rss/cnn_topstories.rss"
+    }
+]

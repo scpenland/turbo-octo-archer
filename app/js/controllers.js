@@ -50,9 +50,9 @@ angular.module('myApp.controllers', [])
     };
   })
 
-  .controller("FeedsController", ['$scope','ParseFeedService', function ($scope, Feed) {
+  .controller("FeedsController", ['$scope','ParseFeedService', function ($scope, ParseFeedService) {
 
-    // $scope.feedSrc = 'http://rss.cnn.com/rss/cnn_topstories.rss';
+    $scope.feedSrc = 'http://rss.cnn.com/rss/cnn_topstories.rss';
 
     $scope.titleText="Boring! Pick Something.";
 
@@ -64,7 +64,7 @@ angular.module('myApp.controllers', [])
     // };
 
     $scope.loadFeed = function(){
-        Feed.parseFeed($scope.feedSrc).then(function(res){
+        ParseFeedService.parseFeed($scope.feedSrc).then(function(res){
             $scope.feeds=res.data.responseData.feed.entries;
         });
     };

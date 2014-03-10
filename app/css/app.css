@@ -15,3 +15,20 @@
 }
 
 input.ng-invalid-minlength.ng-dirty {border: 1px solid blue;}
+
+.side-nav ul li {
+  list-style: none;
+  background-color: #efefef;
+  padding: 0;
+}
+
+.feeds ul li {
+  list-style: none;
+  background-color: #CCCCCC;
+  border: 1px solid #999999;
+  padding: 10px;
+}
+
+main {
+  padding: 20px;
+}

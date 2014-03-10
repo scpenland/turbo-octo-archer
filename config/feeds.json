@@ -11,17 +11,17 @@
     },
     {
         "id": 2,
-        "name": "CNN",
-        "url": "http://rss.cnn.com/rss/cnn_topstories.rss"
+        "name": "Mashable",
+        "url": "http://feeds2.feedburner.com/Mashable"
     },
     {
         "id": 3,
-        "name": "CNN",
-        "url": "http://rss.cnn.com/rss/cnn_topstories.rss"
+        "name": "Huffington Post",
+        "url": "http://feeds.huffingtonpost.com/huffingtonpost/raw_feed"
     },
     {
         "id": 4,
-        "name": "CNN",
-        "url": "http://rss.cnn.com/rss/cnn_topstories.rss"
+        "name": "Techcrunch",
+        "url": "http://feeds.feedburner.com/TechCrunch"
     }
 ]

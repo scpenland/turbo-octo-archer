@@ -39,19 +39,13 @@
 </div> -->
 
 
-<div class="small-4 columns" ng-init="loadFeed();">
+<div class="small-4 columns side-nav">
   <h2>Sidebar</h2>
 
-  <ul id="emailListing">
-        <li><a ng-click="feedSrc='http://rss.cnn.com/rss/cnn_topstories.rss';loadFeed();">CNN</a></li>
-        <li><a ng-click="feedSrc='http://news.ycombinator.com/rss';loadFeed()">Hacker News</a></li>
-        <li><a ng-click="feedSrc='http://feeds2.feedburner.com/Mashable';loadFeed()">Mashable</a></li>                  
-        <li><a ng-click="feedSrc='http://feeds.huffingtonpost.com/huffingtonpost/raw_feed';loadFeed()">Huffington Post</a></li>
-        <li><a ng-click="feedSrc='http://feeds.feedburner.com/TechCrunch';loadFeed()">TechCrunch</a></li>
-  </ul>
-
-  <ul>
-    <li></li>
+  <ul >
+    <li ng-repeat="feedName in importedFeeds">
+      <p ng-click="selectFeed(feedName.id);">{{feedName.name}}</p>
+    </li>
   </ul>
 
 </div>

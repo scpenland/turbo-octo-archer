@@ -50,21 +50,22 @@ angular.module('myApp.controllers', [])
     };
   })
 
-  .controller("FeedsController", ['$scope','ParseFeedService', function ($scope, Feed) {
+  .controller("FeedsController", ['$scope','ParseFeedService', 'GetFeedService', function ($scope, ParseFeedService, GetFeedService) {
 
-    // $scope.feedSrc = 'http://rss.cnn.com/rss/cnn_topstories.rss';
+    $scope.importedFeeds = [
+      {id: 0, name: 'Huff', url: "http://feeds.huffingtonpost.com/huffingtonpost/raw_feed"},
+      {id: 1, name: 'Tech', url: "http://feeds.feedburner.com/TechCrunch"},
+      {id: 2, name: 'Yahoo', url: "http://news.ycombinator.com/rss"}
+    ];
 
-    $scope.titleText="Boring! Pick Something.";
-
-    // $scope.loadFeed=function(event){
-    //     Feed.parseFeed($scope.feedSrc).then(function(res){
-    //         $scope.titleText=angular.element(event.target).text();
-    //         $scope.feeds=res.data.responseData.feed.entries;
-    //     });
-    // };
+    $scope.selectFeed = function (id) {
+      $scope.feedSrc = $scope.importedFeeds[id].url;
+      $scope.titleText = $scope.importedFeeds[id].name;
+      $scope.loadFeed();
+    };
 
     $scope.loadFeed = function(){
-        Feed.parseFeed($scope.feedSrc).then(function(res){
+        ParseFeedService.parseFeed($scope.feedSrc).then(function(res){
             $scope.feeds=res.data.responseData.feed.entries;
         });
     };
@@ -72,6 +73,7 @@ angular.module('myApp.controllers', [])
     $scope.submitFeed = function () {
 
     };
+
   }])
 
 

@@ -6,9 +6,11 @@
 angular.module('myApp.controllers', [])
 
   .controller('HomeController', function($scope) {
+
     $scope.selectedFeed;
     $scope.setSelectedFeed = function(feed) {
       $scope.selectedFeed = feed;
+      console.log("$scope.selectedFeed");
     };
 
     $scope.isSelected = function(feed) {
@@ -53,11 +55,17 @@ angular.module('myApp.controllers', [])
 
   .controller("FeedsController", ['$scope','ParseFeedService', 'GetFeedService', function ($scope, ParseFeedService, GetFeedService) {
 
-    $scope.importedFeeds = [
-      {id: 0, name: 'Huff', url: "http://feeds.huffingtonpost.com/huffingtonpost/raw_feed"},
-      {id: 1, name: 'Tech', url: "http://feeds.feedburner.com/TechCrunch"},
-      {id: 2, name: 'Yahoo', url: "http://news.ycombinator.com/rss"}
-    ];
+    $scope.importedFeeds = [];
+      GetFeedService.getFeeds().success(function(data){
+        $scope.importedFeeds = data;
+        console.log($scope.importedFeeds);
+    });
+
+    // $scope.importedFeeds = [
+    //   {id: 0, name: 'Huff', url: "http://feeds.huffingtonpost.com/huffingtonpost/raw_feed"},
+    //   {id: 1, name: 'Tech', url: "http://feeds.feedburner.com/TechCrunch"},
+    //   {id: 2, name: 'Yahoo', url: "http://news.ycombinator.com/rss"}
+    // ];
 
     $scope.selectFeed = function (id) {
       $scope.feedSrc = $scope.importedFeeds[id].url;

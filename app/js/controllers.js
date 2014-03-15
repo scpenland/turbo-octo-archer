@@ -59,6 +59,12 @@ angular.module('myApp.controllers', [])
       {id: 2, name: 'Yahoo', url: "http://news.ycombinator.com/rss"}
     ];
 
+    // $scope.importedFeeds = [
+    //   {id: 0, name: 'Huff', url: "http://feeds.huffingtonpost.com/huffingtonpost/raw_feed"},
+    //   {id: 1, name: 'Tech', url: "http://feeds.feedburner.com/TechCrunch"},
+    //   {id: 2, name: 'Yahoo', url: "http://news.ycombinator.com/rss"}
+    // ];
+
     $scope.selectFeed = function (id) {
       $scope.feedSrc = $scope.importedFeeds[id].url;
       $scope.titleText = $scope.importedFeeds[id].name;

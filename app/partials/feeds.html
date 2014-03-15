@@ -5,9 +5,6 @@
     <li ng-repeat="feedName in feeds">
       <p ng-click="selectFeed(feedName.id);">{{feedName.name}}</p>
     </li>
-<!--     <li >
-      <p ng-click="selectFeed(feeds[0].id);">{{feeds[0].name}}</p>
-    </li> -->
   </ul>
   <div class="row" ng-controller="ContactController">
     <input type="text" class="span10" autocomplete="off" placeholder="Enter NEW Feed URL" data-ng-model="newFeed" />

@@ -1,10 +1,10 @@
 <div class="small-4 columns" ng-controller="ListingController">
   <h2>Sidebar</h2>
   <ul>
-    <li ng-repeat="feed in feeds" ng-click="setSelectedFeed(feed)">
+    <li ng-repeat="feed in feeds" ng-click="setSelectedFeed(feed.id)">
       <div>
         <div>{{ feed.name }}</div>
-        <div ng-click="loadFeed(feed.url);">{{ feed.url }}</div>
+        <div>{{ feed.url }}</div>
       </div>
     </li>
   </ul> 
@@ -12,19 +12,20 @@
 
 <div class="small-8 columns" ng-controller="ContentController">
   <h2>Content</h2>
-  <div ng-show="!selectedFeed">
+  <div ng-show="!feedSrc">
     Nothing Selected
   </div>
-  <div ng-show="selectedFeed">
+  <div ng-show="feedSrc">
       <div class="row header">
-        <div class="small-6 columns">{{selectedFeed.name}}</div>
-        <div class="small-6 columns">{{selectedFeed.url}}</div>
+        <div>{{feedSrc.name}}</div>
+        <div>{{feedSrc.url}}</div>
+        <div>{{feedSrc.url}}</div>
       </div>
       <div class="row actions">
         <a ng-click="showReply()" class="button radius push-1">I'm a button!</a>
       </div>
-      <div class="small-12 columns" ng-bind-html-unsafe="selectedFeed">
-        
+      <div class="small-12 columns" ng-bind-html-unsafe="feedSrc">
+        {{feedSrc}}
       </div>
   </div>
 </div>

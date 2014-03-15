@@ -5,7 +5,8 @@
 
 angular.module('myApp.controllers', [])
 
-  .controller('HomeController', function($scope) {
+  .controller('HomeController', function($scope, ParseFeedService) {
+    
     $scope.selectedFeed;
     $scope.setSelectedFeed = function(feed) {
       $scope.selectedFeed = feed;
@@ -16,14 +17,13 @@ angular.module('myApp.controllers', [])
         return $scope.selectedFeed === feed;
       }
     };
-  })
 
-  // .controller('ListingController', function($scope, $http) {
-  //   $http.get('/config/data.json')
-  //    .then(function(res){
-  //       $scope.thing = res.data;
-  //     });
-  // })
+    $scope.loadFeed = function(){
+      ParseFeedService.parseFeed($scope.feed).then(function(res){
+          $scope.feeds=res.data.responseData.feed.entries;
+      });
+    };
+  })
 
   .controller('ListingController', function($scope, $http, GetFeedService, ParseFeedService) {
     $scope.feeds = [];
@@ -33,10 +33,12 @@ angular.module('myApp.controllers', [])
   })
 
   .controller('ContentController', function($scope, $http) {
+
     $scope.showingReply = false;
 
     $scope.showReply = function () {
       $scope.showingReply = true;
+       console.log($scope.showingReply);
     };
   })
 
@@ -51,13 +53,16 @@ angular.module('myApp.controllers', [])
     };
   })
 
+
+
+
   .controller("FeedsController", ['$scope','ParseFeedService', 'GetFeedService', function ($scope, ParseFeedService, GetFeedService) {
 
-    $scope.importedFeeds = [
-      {id: 0, name: 'Huff', url: "http://feeds.huffingtonpost.com/huffingtonpost/raw_feed"},
-      {id: 1, name: 'Tech', url: "http://feeds.feedburner.com/TechCrunch"},
-      {id: 2, name: 'Yahoo', url: "http://news.ycombinator.com/rss"}
-    ];
+    $scope.feeds = [];
+      GetFeedService.getFeeds().success(function(data){
+        $scope.feeds=data;
+        console.log($scope.feeds);
+    });
 
     // $scope.importedFeeds = [
     //   {id: 0, name: 'Huff', url: "http://feeds.huffingtonpost.com/huffingtonpost/raw_feed"},
@@ -66,19 +71,20 @@ angular.module('myApp.controllers', [])
     // ];
 
     $scope.selectFeed = function (id) {
-      $scope.feedSrc = $scope.importedFeeds[id].url;
-      $scope.titleText = $scope.importedFeeds[id].name;
+      $scope.feedSrc = $scope.feeds[id].url;
+      $scope.titleText = $scope.feeds[id].name;
       $scope.loadFeed();
     };
 
+    $scope.feedomatic;
     $scope.loadFeed = function(){
         ParseFeedService.parseFeed($scope.feedSrc).then(function(res){
-            $scope.feeds=res.data.responseData.feed.entries;
+            $scope.feedomatic=res.data.responseData.feed.entries;
         });
     };
 
-    $scope.submitFeed = function () {
-
+    $scope.submitFeed = function (newFeed) {
+      console.log(newFeed);
     };
 
   }])
